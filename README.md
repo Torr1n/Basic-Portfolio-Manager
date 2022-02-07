@@ -24,5 +24,5 @@ level.
 - *As a user,* I want to be able to buy a given number of shares of a stock for my portfolio 
 - *As a user,* I want to be able to view the list of stocks that I own 
 - *As a user,* I want to be able to get the total value of all the stocks I own
-- *As a user,* I want to be able to sell a stock and see how much profit I made
+- *As a user,* I want to be able to sell shares of a stock 
 - *As a user,* I want to be able to change the price of a stock and see that reflected in the value of my portfolio
