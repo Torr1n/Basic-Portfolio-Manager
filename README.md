@@ -1,7 +1,6 @@
 # Investment Portfolio Manager
 
-## An application that allows you to buy and shares of stocks,
-## and gives insights on the growth and profit of your portfolio
+## An application that allows you to buy and sell shares of stocks, and shows the growth and profit of your portfolio
 
 ***What will the application do?***
 - The application will allow the user to specify a stock and its share price and purchase a number of shares
@@ -19,3 +18,11 @@ This project is of interest to me because I am passionate about finance and, and
 pursuing business in addition to computer science. I feel like this project is an opportunity for me to start to 
 combine these two interests by creating a program that integrates these two fields, even if it is only at a basic 
 level.
+
+## User Stories
+
+- *As a user,* I want to be able to buy a given number of shares of a stock for my portfolio 
+- *As a user,* I want to be able to view the list of stocks that I own 
+- *As a user,* I want to be able to get the total value of all the stocks I own
+- *As a user,* I want to be able to sell a stock and see how much profit I made
+- *As a user,* I want to be able to change the price of a stock and see that reflected in the value of my portfolio
