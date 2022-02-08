@@ -28,6 +28,10 @@ public class Stock {
         return priceHistory;
     }
 
+    public ArrayList<Purchase> getPurchaseHistory() {
+        return purchaseHistory;
+    }
+
     //EFFECTS: sums the shares bought at each price in the purchase history
     public int getSharesOwned() {
         int sharesOwned = 0;
@@ -44,10 +48,6 @@ public class Stock {
             amountInvested += p.totalInvested();
         }
         return amountInvested;
-    }
-
-    public ArrayList<Purchase> getPurchaseHistory() {
-        return purchaseHistory;
     }
 
     //REQUIRES: currentPrice >= 0.0
@@ -86,8 +86,7 @@ public class Stock {
 
     //EFFECTS: returns the current market value of all the owned shares of the stock
     public Double currentValueOfShares() {
-        Double p = getMostRecentPrice();
-        return (getSharesOwned() * p);
+        return (getSharesOwned() * getMostRecentPrice());
     }
 
     //EFFECTS: returns the current profit made on the stock (in dollars)
@@ -96,12 +95,8 @@ public class Stock {
     }
 
     //EFFECTS: returns the most recent price of the stock
-    private Double getMostRecentPrice() {
-        int s = priceHistory.size();
-        return priceHistory.get(s - 1);
+    public Double getMostRecentPrice() {
+        return priceHistory.get(priceHistory.size() - 1);
     }
-
-
-
 
 }

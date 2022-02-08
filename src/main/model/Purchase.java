@@ -19,6 +19,7 @@ public class Purchase {
         return numShares;
     }
 
+    //EFFECTS: returns the total amount (in dollars) purchased in this purchase
     public Double totalInvested() {
         return (numShares * pricePurchased);
     }
