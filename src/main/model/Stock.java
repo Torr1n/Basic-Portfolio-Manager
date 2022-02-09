@@ -42,8 +42,8 @@ public class Stock {
     }
 
     //EFFECTS: sums the value of all shares bought at each price in the purchase history
-    public int getAmountInvested() {
-        int amountInvested = 0;
+    public Double getAmountInvested() {
+        Double amountInvested = 0.0;
         for (Purchase p : purchaseHistory) {
             amountInvested += p.totalInvested();
         }
@@ -98,5 +98,4 @@ public class Stock {
     public Double getMostRecentPrice() {
         return priceHistory.get(priceHistory.size() - 1);
     }
-
 }

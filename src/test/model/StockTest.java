@@ -111,7 +111,8 @@ class StockTest {
         return new Purchase(sharesBought, updatedPrice);
     }
 
-    //EFFECTS: determines if the purchase history has given size, and the given purchase is at the correct placement
+    //EFFECTS: determines if the purchase history has given size,
+    //         and the given purchase is at the correct placement
     private void isSizeAndPlacementOfPurchaseCorrect(int size, Purchase purchase, int placementInListOfPurchase) {
         assertEquals(size, testStock.getPurchaseHistory().size());
         assertEquals(purchase.getPricePurchased(),
