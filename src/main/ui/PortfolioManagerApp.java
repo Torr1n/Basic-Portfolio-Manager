@@ -42,18 +42,24 @@ public class PortfolioManagerApp {
     //EFFECTS: processes user command
     private void processCommand(String command) {
         switch (command) {
-            case "b": buyStock();
-            break;
-            case "s": sellStock();
-            break;
-            case "l": listOwned();
-            break;
-            case "v": displayTotalValue();
-            break;
-            case "p": displayTotalProfit();
-            break;
-            case "u": updateStock();
-            break;
+            case "b":
+                buyStock();
+                break;
+            case "s":
+                sellStock();
+                break;
+            case "l":
+                listOwned();
+                break;
+            case "v":
+                displayTotalValue();
+                break;
+            case "p":
+                displayTotalProfit();
+                break;
+            case "u":
+                updateStock();
+                break;
         }
     }
 
@@ -85,19 +91,24 @@ public class PortfolioManagerApp {
         System.out.println(new StringBuilder()
                 .append("The total value of you portfolio is currently: \n$")
                 .append(myPortfolio.portfolioValue().toString())
-                .append("\n Your initial investment was: \n$:")
+                .append("\n Your initial investment was: \n$")
                 .append(myPortfolio.portfolioInvested().toString()));
     }
 
     //EFFECTS: lists the amount of shares the user owns and ticker of each stock in their portfolio
     private void listOwned() {
+        myPortfolio.removeNotOwnedStocks();
         System.out.println("You own: ");
-        for (Stock stock: myPortfolio.getOwned()) {
-            System.out.println(new StringBuilder()
-                    .append("\n")
-                    .append(stock.getSharesOwned().toString())
-                    .append(" shares of ")
-                    .append(stock.getTicker()));
+        if (myPortfolio.isEmpty()) {
+            System.out.println("\n No stocks! Go buy some!");
+        } else {
+            for (Stock stock : myPortfolio.getOwned()) {
+                System.out.println(new StringBuilder()
+                        .append("\n")
+                        .append(stock.getSharesOwned().toString())
+                        .append(" shares of ")
+                        .append(stock.getTicker()));
+            }
         }
     }
 
@@ -122,6 +133,7 @@ public class PortfolioManagerApp {
                         .append(amount).append(" shares of ")
                         .append(ticker).append(" for $")
                         .append(amount * stock.getMostRecentPrice()).append("\n"));
+                myPortfolio.removeNotOwnedStocks();
             }
         } else {
             System.out.println("You do not own any of this stock!\n");
@@ -145,7 +157,7 @@ public class PortfolioManagerApp {
             Double price = input.nextDouble();
             howManySharesWanted(ticker, "buy");
             int amount = input.nextInt();
-            myPortfolio.addStock(new Stock(ticker,price,amount));
+            myPortfolio.addStock(new Stock(ticker, price, amount));
         }
         System.out.println("Transaction Complete\n");
     }
@@ -159,9 +171,9 @@ public class PortfolioManagerApp {
                 .append(ticker)
                 .append(" is $")
                 .append((stock.getMostRecentPrice()).toString())
-                .append("\n You own:")
+                .append("\n You own: ")
                 .append((stock.getSharesOwned()).toString())
-                .append(" shares.\n"));
+                .append(" shares\n"));
     }
 
     //EFFECTS: when given a ticker and a string either buy or sell, prints out asking user:
