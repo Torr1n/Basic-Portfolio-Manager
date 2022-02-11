@@ -9,7 +9,7 @@ public class Stock {
     private final ArrayList<Double> priceHistory;
     private final ArrayList<Purchase> purchaseHistory;
 
-    //REQUIRES: ticker has a non-zero length, price >= 0.0, shares >0
+    //REQUIRES: ticker has a non-zero length, price >= 0.0, shares >=0
     //EFFECTS: creates a Stock with the given ticker, a list of purchases with the initial transaction in it
     //         and adds the given current price to an empty list to record the stock's price history
     public Stock(String ticker, Double price, int shares) {
@@ -33,7 +33,7 @@ public class Stock {
     }
 
     //EFFECTS: sums the shares bought at each price in the purchase history
-    public int getSharesOwned() {
+    public Integer getSharesOwned() {
         int sharesOwned = 0;
         for (Purchase p : purchaseHistory) {
             sharesOwned += p.getNumShares();

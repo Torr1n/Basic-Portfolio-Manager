@@ -18,7 +18,8 @@ public class PortfolioTest {
         this.apple = new Stock("AAPL", 200.0, 10);
         this.microsoft = new Stock("MSFT", 50.0, 5);
         this.google = new Stock("GOOGL", 100.0, 15);
-        this.testPortfolio = new Portfolio(apple);
+        this.testPortfolio = new Portfolio();
+        testPortfolio.addStock(apple);
     }
 
     @Test
@@ -45,6 +46,21 @@ public class PortfolioTest {
         assertEquals(4000.0, testPortfolio.portfolioValue());
         google.buyMoreShares(5);
         assertEquals(4500.0, testPortfolio.portfolioValue());
+    }
+
+    @Test
+    void testPortfolioProfit() {
+        assertEquals(0, testPortfolio.portfolioProfit());
+        addGoogleAndMicrosoft();
+        assertEquals(0, testPortfolio.portfolioProfit());
+        microsoft.updatePrice(100.0);
+        assertEquals(250.0, testPortfolio.portfolioProfit());
+        google.updatePrice(110.0);
+        assertEquals(400.0, testPortfolio.portfolioProfit());
+        apple.updatePrice(190.0);
+        assertEquals(300.0, testPortfolio.portfolioProfit());
+        microsoft.updatePrice(10.0);
+        assertEquals(-150.0, testPortfolio.portfolioProfit());
     }
 
     @Test

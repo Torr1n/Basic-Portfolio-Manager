@@ -9,9 +9,8 @@ public class Portfolio {
 
     //REQUIRES: the given stock is not already in the list of owned stocks
     //EFFECTS: creates a new portfolio with the given stock in it
-    public Portfolio(Stock stock) {
+    public Portfolio() {
         this.owned = new ArrayList<>();
-        owned.add(stock);
     }
 
     public ArrayList<Stock> getOwned() {
@@ -29,6 +28,15 @@ public class Portfolio {
         Double v = 0.0;
         for (Stock s : owned) {
             v += s.currentValueOfShares();
+        }
+        return v;
+    }
+
+    //EFFECTS: sums the profit of all shares owned of all stocks
+    public Double portfolioProfit() {
+        Double v = 0.0;
+        for (Stock s : owned) {
+            v += s.profit();
         }
         return v;
     }
