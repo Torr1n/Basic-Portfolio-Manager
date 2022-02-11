@@ -88,6 +88,7 @@ public class PortfolioTest {
     void testFindStockFromTicker() {
         assertEquals(apple, testPortfolio.findStockFromTicker("AAPL"));
         addGoogleAndMicrosoft();
+        assertNull(testPortfolio.findStockFromTicker("TSLA"));
         assertEquals(microsoft, testPortfolio.findStockFromTicker("MSFT"));
         assertEquals(google, testPortfolio.findStockFromTicker("GOOGL"));
     }
@@ -106,6 +107,10 @@ public class PortfolioTest {
         testPortfolio.removeStock("AAPL");
         assertTrue(testPortfolio.isEmpty());
         addGoogleAndMicrosoft();
+        testPortfolio.removeStock("TSLA");
+        assertEquals(2, testPortfolio.howManyOwned());
+        assertTrue(testPortfolio.containsStock("MSFT"));
+        assertTrue(testPortfolio.containsStock("GOOGL"));
         testPortfolio.removeStock("GOOGL");
         assertEquals(1, testPortfolio.howManyOwned());
         assertTrue(testPortfolio.containsStock("MSFT"));
