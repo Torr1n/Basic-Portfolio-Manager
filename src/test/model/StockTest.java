@@ -15,10 +15,10 @@ class StockTest {
 
     @Test
     void testConstructor() {
-        assertEquals("TEST",testStock.getTicker());
-        assertEquals(10,testStock.getPurchaseHistory().get(0).getNumShares());
-        assertEquals(100.0,testStock.getPurchaseHistory().get(0).getPricePurchased());
-        assertEquals(100.0,testStock.getPriceHistory().get(0));
+        assertEquals("TEST", testStock.getTicker());
+        assertEquals(10, testStock.getPurchaseHistory().get(0).getNumShares());
+        assertEquals(100.0, testStock.getPurchaseHistory().get(0).getPricePurchased());
+        assertEquals(100.0, testStock.getPriceHistory().get(0));
     }
 
     @Test
@@ -49,7 +49,7 @@ class StockTest {
         assertEquals(111.1, testStock.getPriceHistory().get(1));
         assertEquals(100.0, testStock.getPriceHistory().get(0));
         testStock.updatePrice((0.0));
-        assertEquals(3,testStock.getPriceHistory().size());
+        assertEquals(3, testStock.getPriceHistory().size());
         assertEquals(0.0, testStock.getPriceHistory().get(2));
     }
 
@@ -57,11 +57,11 @@ class StockTest {
     void testBuyMoreShares() {
         testStock.buyMoreShares(20);
         Purchase p = new Purchase(20, 100.0);
-        isSizeAndPlacementOfPurchaseCorrect(2,p,1);
+        isSizeAndPlacementOfPurchaseCorrect(2, p, 1);
         testStock.updatePrice(200.0);
         testStock.buyMoreShares(10);
         p = new Purchase(10, 200.0);
-        isSizeAndPlacementOfPurchaseCorrect(3,p,2);
+        isSizeAndPlacementOfPurchaseCorrect(3, p, 2);
     }
 
     @Test
@@ -69,15 +69,15 @@ class StockTest {
         Purchase p0 = updatePriceBuySharesAndMakePurchase(200.0, 20);
         Purchase p1 = updatePriceBuySharesAndMakePurchase(150.0, 15);
         testStock.sellShares(10);
-        isSizeAndPlacementOfPurchaseCorrect(2,p0,0);
-        isSizeAndPlacementOfPurchaseCorrect(2,p1,1);
+        isSizeAndPlacementOfPurchaseCorrect(2, p0, 0);
+        isSizeAndPlacementOfPurchaseCorrect(2, p1, 1);
         testStock.sellShares(15);
-        Purchase p2 = new Purchase(5,200.0);
-        isSizeAndPlacementOfPurchaseCorrect(2,p2,0);
-        isSizeAndPlacementOfPurchaseCorrect(2,p1,1);
+        Purchase p2 = new Purchase(5, 200.0);
+        isSizeAndPlacementOfPurchaseCorrect(2, p2, 0);
+        isSizeAndPlacementOfPurchaseCorrect(2, p1, 1);
         testStock.sellShares(10);
-        Purchase p3 = new Purchase(10,150.0);
-        isSizeAndPlacementOfPurchaseCorrect(1,p3,0);
+        Purchase p3 = new Purchase(10, 150.0);
+        isSizeAndPlacementOfPurchaseCorrect(1, p3, 0);
     }
 
     @Test
@@ -104,7 +104,8 @@ class StockTest {
         assertEquals(150, testStock.getMostRecentPrice());
     }
 
-    //EFFECTS: changes the price of the stock and buys shares, then outputs a new purchase with those fields
+    //EFFECTS: changes the price of the stock and buys shares,
+    //         then outputs a new purchase with those fields
     private Purchase updatePriceBuySharesAndMakePurchase(Double updatedPrice, int sharesBought) {
         testStock.updatePrice(updatedPrice);
         testStock.buyMoreShares(sharesBought);
@@ -113,11 +114,11 @@ class StockTest {
 
     //EFFECTS: determines if the purchase history has given size,
     //         and the given purchase is at the correct placement
-    private void isSizeAndPlacementOfPurchaseCorrect(int size, Purchase purchase, int placementInListOfPurchase) {
+    private void isSizeAndPlacementOfPurchaseCorrect(int size, Purchase p, int placement) {
         assertEquals(size, testStock.getPurchaseHistory().size());
-        assertEquals(purchase.getPricePurchased(),
-                testStock.getPurchaseHistory().get(placementInListOfPurchase).getPricePurchased());
-        assertEquals(purchase.getNumShares(),
-                testStock.getPurchaseHistory().get(placementInListOfPurchase).getNumShares());
+        assertEquals(p.getPricePurchased(),
+                testStock.getPurchaseHistory().get(placement).getPricePurchased());
+        assertEquals(p.getNumShares(),
+                testStock.getPurchaseHistory().get(placement).getNumShares());
     }
 }

@@ -144,7 +144,7 @@ public class PortfolioTest {
         testPortfolio.removeStock("AAPL");
         assertEquals(0, testPortfolio.howManyOwned());
         addGoogleAndMicrosoft();
-        assertEquals(2,testPortfolio.howManyOwned());
+        assertEquals(2, testPortfolio.howManyOwned());
     }
 
     private void addGoogleAndMicrosoft() {

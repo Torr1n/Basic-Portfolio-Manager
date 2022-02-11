@@ -78,8 +78,8 @@ public class Stock {
                 purchaseHistory.remove(0);
             } else {
                 Purchase sold = new Purchase((purchaseHistory.get(0).getNumShares() - amount),
-                                              purchaseHistory.get(0).getPricePurchased());
-                purchaseHistory.set(0,sold);
+                        purchaseHistory.get(0).getPricePurchased());
+                purchaseHistory.set(0, sold);
             }
         }
     }
