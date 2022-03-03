@@ -27,3 +27,5 @@ level.
 - *As a user,* I want to be able to get the total profit I have made on all of my owned stocks
 - *As a user,* I want to be able to sell shares of a stock 
 - *As a user,* I want to be able to change the price of a stock and see that reflected in the value of my portfolio
+- *As a user,* I want to be given the option to save my portfolio to file
+- *As a user,* I want to be given the option to load my portfolio from file
