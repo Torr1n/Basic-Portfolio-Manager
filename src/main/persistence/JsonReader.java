@@ -13,6 +13,7 @@ import model.Purchase;
 import model.Stock;
 import org.json.*;
 
+// Code based on code found in demo project: JsonSerializationDemo
 // Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
     private String source;

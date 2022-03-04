@@ -1,9 +1,9 @@
 package model;
-//Represents a history of stock purchases with the number of shares purchased and price purchased at
 
 import org.json.JSONObject;
 import persistence.Writable;
 
+//Represents a history of stock purchases with the number of shares purchased and price purchased at
 public class Purchase implements Writable {
 
     private final int numShares;

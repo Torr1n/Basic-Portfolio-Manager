@@ -13,6 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// Code based on code found in demo project: JsonSerializationDemo
 class JsonReaderTest extends JsonTest {
 
     @Test

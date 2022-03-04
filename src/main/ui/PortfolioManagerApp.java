@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+// Some code based on code found in demo project: JsonSerializationDemo
 //Portfolio Manager Application
 public class PortfolioManagerApp {
     private static final String JSON_STORE = "./data/Portfolio.json";
@@ -49,34 +50,27 @@ public class PortfolioManagerApp {
     //EFFECTS: processes user command
     private void processCommand(String command) {
         switch (command) {
-            case "b":
-                buyStock();
+            case "b": buyStock();
                 break;
-            case "s":
-                sellStock();
+            case "s": sellStock();
                 break;
-            case "o":
-                listOwned();
+            case "o": listOwned();
                 break;
-            case "v":
-                displayTotalValue();
+            case "v": displayTotalValue();
                 break;
-            case "p":
-                displayTotalProfit();
+            case "p": displayTotalProfit();
                 break;
-            case "u":
-                updateStock();
+            case "u": updateStock();
                 break;
-            case "f":
-                savePortfolio();
+            case "f": savePortfolio();
                 break;
-            case "l":
-                loadPortfolio();
+            case "l": loadPortfolio();
                 break;
         }
     }
 
-    private void loadPortfolio() {
+    // EFFECTS: saves the workroom to file
+    private void savePortfolio() {
         try {
             jsonWriter.open();
             jsonWriter.write(myPortfolio);
@@ -87,7 +81,9 @@ public class PortfolioManagerApp {
         }
     }
 
-    private void savePortfolio() {
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadPortfolio() {
         try {
             myPortfolio = jsonReader.read();
             System.out.println("Loaded the saved portfolio from " + JSON_STORE);

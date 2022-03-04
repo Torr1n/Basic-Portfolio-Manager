@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Code based on code found in demo project: JsonSerializationDemo
 class JsonWriterTest extends JsonTest {
 
     @Test

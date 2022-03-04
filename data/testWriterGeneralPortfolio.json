@@ -1,1 +1,53 @@
-{"owned":[{"ticker":"test0","Price History":[{"price":100},{"price":150},{"price":200}],"Purchase History":[{"Number of Shares":10,"Purchase Price":100},{"Number of Shares":10,"Purchase Price":100},{"Number of Shares":5,"Purchase Price":150}]},{"ticker":"test1","Price History":[{"price":200},{"price":250}],"Purchase History":[{"Number of Shares":20,"Purchase Price":200},{"Number of Shares":10,"Purchase Price":200}]}]}
+{
+  "owned": [
+    {
+      "ticker": "test0",
+      "Price History": [
+        {
+          "price": 100
+        },
+        {
+          "price": 150
+        },
+        {
+          "price": 200
+        }
+      ],
+      "Purchase History": [
+        {
+          "Number of Shares": 10,
+          "Purchase Price": 100
+        },
+        {
+          "Number of Shares": 10,
+          "Purchase Price": 100
+        },
+        {
+          "Number of Shares": 5,
+          "Purchase Price": 150
+        }
+      ]
+    },
+    {
+      "ticker": "test1",
+      "Price History": [
+        {
+          "price": 200
+        },
+        {
+          "price": 250
+        }
+      ],
+      "Purchase History": [
+        {
+          "Number of Shares": 20,
+          "Purchase Price": 200
+        },
+        {
+          "Number of Shares": 10,
+          "Purchase Price": 200
+        }
+      ]
+    }
+  ]
+}

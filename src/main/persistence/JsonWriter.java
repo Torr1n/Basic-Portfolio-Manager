@@ -6,6 +6,7 @@ import org.json.JSONObject;
 
 import java.io.*;
 
+// Code based on code found in demo project: JsonSerializationDemo
 // Represents a writer that writes JSON representation of workroom to file
 public class JsonWriter {
     private static final int TAB = 0;
@@ -21,7 +22,7 @@ public class JsonWriter {
     // EFFECTS: opens writer; throws FileNotFoundException if destination file cannot
     // be opened for writing
     public void open() throws FileNotFoundException {
-        writer = new PrintWriter(new File(destination));
+        writer = new PrintWriter(destination);
     }
 
     // MODIFIES: this
