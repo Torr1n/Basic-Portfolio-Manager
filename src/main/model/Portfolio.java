@@ -1,10 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Portfolio {
-    //Represents a list of different shares
+//Represents a list of different shares
+public class Portfolio implements Writable {
+
     private ArrayList<Stock> owned;
 
     //REQUIRES: the given stock is not already in the list of owned stocks
@@ -119,6 +124,24 @@ public class Portfolio {
     //EFFECTS: returns the amount of stocks in owned
     public int howManyOwned() {
         return owned.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("owned", ownedToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray ownedToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Stock s : owned) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
     }
 }
 

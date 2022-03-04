@@ -1,13 +1,18 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class Stock {
-    // Represents a Stock having a ticker, amount of shares owned, purchase history of the stock
-    // and list of historical prices (in dollars)
+// Represents a Stock having a ticker, amount of shares owned, purchase history of the stock
+// and list of historical prices (in dollars)
+public class Stock implements Writable {
+
     private final String ticker;
-    private final ArrayList<Double> priceHistory;
-    private final ArrayList<Purchase> purchaseHistory;
+    private ArrayList<Double> priceHistory;
+    private ArrayList<Purchase> purchaseHistory;
 
     //REQUIRES: ticker has a non-zero length, price >= 0.0, shares >=0
     //EFFECTS: creates a Stock with the given ticker, a list of purchases with the initial transaction in it
@@ -97,5 +102,48 @@ public class Stock {
     //EFFECTS: returns the most recent price of the stock
     public Double getMostRecentPrice() {
         return priceHistory.get(priceHistory.size() - 1);
+    }
+
+    //EFFECTS: changes the priceHistory to the given arraylist
+    public void setPriceHistory(ArrayList<Double> a) {
+        this.priceHistory = a;
+    }
+
+    //EFFECTS: changes the purchaseHistory to the given arraylist
+    public void setPurchaseHistory(ArrayList<Purchase> a) {
+        this.purchaseHistory = a;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("ticker", ticker);
+        json.put("Price History", priceHistoryToJson());
+        json.put("Purchase History", purchaseHistoryToJson());
+        return json;
+    }
+
+    // EFFECTS: returns historical prices of this stock as a JSON array
+    private JSONArray priceHistoryToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Double d : priceHistory) {
+            JSONObject json = new JSONObject();
+            json.put("price", d);
+            jsonArray.put(json);
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns past purchases of this stock as a JSON array
+    private JSONArray purchaseHistoryToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Purchase p : purchaseHistory) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 }

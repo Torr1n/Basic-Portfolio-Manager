@@ -2,16 +2,23 @@ package ui;
 
 import model.Portfolio;
 import model.Stock;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //Portfolio Manager Application
 public class PortfolioManagerApp {
+    private static final String JSON_STORE = "./data/Portfolio.json";
     private Portfolio myPortfolio;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: runs the portfolio manager application
-    public PortfolioManagerApp() {
+    public PortfolioManagerApp() throws FileNotFoundException {
         runPortfolioManager();
     }
 
@@ -28,7 +35,7 @@ public class PortfolioManagerApp {
             command = input.next();
             command = command.toLowerCase();
 
-            if (command.equals("q")) {
+            if (command.equals("e")) {
                 keepGoing = false;
             } else {
                 processCommand(command);
@@ -48,7 +55,7 @@ public class PortfolioManagerApp {
             case "s":
                 sellStock();
                 break;
-            case "l":
+            case "o":
                 listOwned();
                 break;
             case "v":
@@ -60,6 +67,32 @@ public class PortfolioManagerApp {
             case "u":
                 updateStock();
                 break;
+            case "f":
+                savePortfolio();
+                break;
+            case "l":
+                loadPortfolio();
+                break;
+        }
+    }
+
+    private void loadPortfolio() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myPortfolio);
+            jsonWriter.close();
+            System.out.println("Saved your portfolio to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    private void savePortfolio() {
+        try {
+            myPortfolio = jsonReader.read();
+            System.out.println("Loaded the saved portfolio from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
@@ -193,6 +226,8 @@ public class PortfolioManagerApp {
         myPortfolio = new Portfolio();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     //EFFECTS: displays menu of options to the user
@@ -200,10 +235,12 @@ public class PortfolioManagerApp {
         System.out.println("\nSelect From:");
         System.out.println("\t b -> buy a stock");
         System.out.println("\t s -> sell a stock");
-        System.out.println("\t l -> list all the stocks owned");
+        System.out.println("\t o -> list all the stocks owned");
         System.out.println("\t v -> view the total value of the portfolio");
         System.out.println("\t p -> produce the total profit in the portfolio");
         System.out.println("\t u -> update a stock's price");
+        System.out.println("\t f -> save portfolio to file");
+        System.out.println("\t l -> load portfolio from file");
         System.out.println("\t e -> exit");
     }
 }
