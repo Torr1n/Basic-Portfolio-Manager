@@ -11,15 +11,19 @@ public class Purchase implements Writable {
     private final int numShares;
     private final Double pricePurchased;
 
+    //REQUIRES: numShares >= 0, pricePurchased >= 0
+    //EFFECTS: creates a new purchase with the given number of shares and at the given price
     public Purchase(int numShares, Double pricePurchased) {
         this.numShares = numShares;
         this.pricePurchased = pricePurchased;
     }
 
+    //EFFECTS: returns the price the stock was purchased at
     public Double getPricePurchased() {
         return pricePurchased;
     }
 
+    //EFFECTS: returns the number of shares purchased
     public int getNumShares() {
         return numShares;
     }
@@ -29,23 +33,14 @@ public class Purchase implements Writable {
         return (numShares * pricePurchased);
     }
 
+    //EFFECTS: determines if two purchases are equal.
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
         Purchase purchase = (Purchase) o;
         return numShares == purchase.numShares && pricePurchased.equals(purchase.pricePurchased);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(numShares, pricePurchased);
-    }
-
+    //EFFECTS: turns the given purchase into a JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

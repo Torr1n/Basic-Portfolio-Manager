@@ -1,13 +1,13 @@
 {
   "owned": [
     {
-      "ticker": "test",
+      "ticker": "test0",
       "Price History": [
         {
           "price": 100
         },
         {
-          "price": 150
+          "price": 1
         }
       ],
       "Purchase History": [
@@ -16,25 +16,29 @@
           "Purchase Price": 100
         },
         {
-          "Number of Shares": 10,
-          "Purchase Price": 150
+          "Number of Shares": 1000,
+          "Purchase Price": 1
         }
       ]
     },
     {
-      "ticker": "test1",
+      "ticker": "test2",
       "Price History": [
         {
-          "price": 200
+          "price": 20
         },
         {
-          "price": 250
+          "price": 199
         }
       ],
       "Purchase History": [
         {
-          "Number of Shares": 20,
-          "Purchase Price": 200
+          "Number of Shares": 100,
+          "Purchase Price": 20
+        },
+        {
+          "Number of Shares": 1999,
+          "Purchase Price": 20
         }
       ]
     }

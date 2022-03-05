@@ -114,6 +114,7 @@ public class Stock implements Writable {
         this.purchaseHistory = a;
     }
 
+    //EFFECTS: turns the given stock into a JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

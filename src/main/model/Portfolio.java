@@ -126,6 +126,7 @@ public class Portfolio implements Writable {
         return owned.size();
     }
 
+    //EFFECTS: turns the given portfolio into a JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
