@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 // Some code based on code found in demo project: JsonSerializationDemo
 //Portfolio Manager Application
-public class PortfolioManagerApp {
+public class OldUI {
     private static final String JSON_STORE = "./data/Portfolio.json";
     private Portfolio myPortfolio;
     private Scanner input;
@@ -19,7 +19,7 @@ public class PortfolioManagerApp {
     private JsonReader jsonReader;
 
     //EFFECTS: runs the portfolio manager application
-    public PortfolioManagerApp() throws FileNotFoundException {
+    public OldUI() throws FileNotFoundException {
         runPortfolioManager();
     }
 
