@@ -29,3 +29,15 @@ level.
 - *As a user,* I want to be able to change the price of a stock and see that reflected in the value of my portfolio
 - *As a user,* I want to be given the option to save my portfolio to file
 - *As a user,* I want to be given the option to load my portfolio from file
+
+***Phase 4: Task 2***
+Mon Mar 28 22:08:27 PDT 2022
+Added a new stock: AAPL with 10 shares and at a price of $100.0 per share
+Mon Mar 28 22:08:31 PDT 2022
+Bought 10 shares of AAPL
+Mon Mar 28 22:08:34 PDT 2022
+Sold 5 shares of AAPL
+Mon Mar 28 22:08:43 PDT 2022
+Added a new stock: TSLA with 100 shares and at a price of $90.0 per share
+Mon Mar 28 22:09:34 PDT 2022
+Updated AAPL's price to 150.0

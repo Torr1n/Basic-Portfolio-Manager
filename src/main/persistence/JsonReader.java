@@ -1,6 +1,6 @@
 package persistence;
 
-import model.Portfolio;
+import model.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -9,8 +9,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import model.Purchase;
-import model.Stock;
 import org.json.*;
 
 // Code based on code found in demo project: JsonSerializationDemo
@@ -28,6 +26,7 @@ public class JsonReader {
     public Portfolio read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("Loaded portfolio from file"));
         return parsePortfolio(jsonObject);
     }
 

@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Portfolio;
 import model.Stock;
 import persistence.JsonReader;
@@ -7,9 +9,7 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,9 +64,20 @@ public class PortfolioManagerUI extends JFrame {
     //EFFECTS: finishes the setup of the desktop by setting the close operation,
     //         centring the screen, and making it visible
     private void finishSetUp() {
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new CustomCloser());
         centreOnScreen();
         setVisible(true);
+    }
+
+    //Represents the custom behaviour wanted when closing the application
+    private class CustomCloser extends WindowAdapter {
+
+        @Override
+        //EFFECTS: provides actions to be taken when the window is closing
+        public void windowClosing(WindowEvent e) {
+            EventLog.printLog();
+            super.windowClosing(e);
+        }
     }
 
     //MODIFIES: this

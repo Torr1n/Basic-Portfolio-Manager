@@ -23,6 +23,8 @@ public class Stock implements Writable {
         purchaseHistory.add(new Purchase(shares, price));
         this.priceHistory = new ArrayList<>();
         priceHistory.add(price);
+        EventLog.getInstance().logEvent(new Event("Added a new stock: " + ticker
+                + " with " + shares + " shares and at a price of $" + price + " per share"));
     }
 
     public String getTicker() {
@@ -60,6 +62,7 @@ public class Stock implements Writable {
     //EFFECTS: adds the given current stock price to the price history of the stock
     public void updatePrice(Double currentPrice) {
         priceHistory.add(currentPrice);
+        EventLog.getInstance().logEvent(new Event("Updated " + ticker + "'s price to " + currentPrice));
     }
 
     //REQUIRES: amount > 0
@@ -67,6 +70,7 @@ public class Stock implements Writable {
     //EFFECTS: creates a new purchase with the given amount and current price. Then adds it to the purchase history
     public void buyMoreShares(int amount) {
         purchaseHistory.add(new Purchase(amount, getMostRecentPrice()));
+        EventLog.getInstance().logEvent(new Event("Bought " + amount + " shares of " + ticker));
     }
 
     //REQUIRES: amount > 0 and amount <= getSharesOwned()
@@ -87,6 +91,7 @@ public class Stock implements Writable {
                 purchaseHistory.set(0, sold);
             }
         }
+        EventLog.getInstance().logEvent(new Event("Sold " + amount + " shares of " + ticker));
     }
 
     //EFFECTS: returns the current market value of all the owned shares of the stock
