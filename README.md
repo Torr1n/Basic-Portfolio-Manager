@@ -41,3 +41,7 @@ Mon Mar 28 22:08:43 PDT 2022
 Added a new stock: TSLA with 100 shares and at a price of $90.0 per share
 Mon Mar 28 22:09:34 PDT 2022
 Updated AAPL's price to 150.0
+
+***Phase 4: Task 3***
+- If I had more time, I would refactor the PortfolioManagerUI so that it doesn't have the two paths in the
+UML diagram to get information about a stock. Currently, there is excess coupling here that should ideally be reduced.

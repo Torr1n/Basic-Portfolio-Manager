@@ -1,6 +1,5 @@
 package ui;
 
-import model.Event;
 import model.EventLog;
 import model.Portfolio;
 import model.Stock;
