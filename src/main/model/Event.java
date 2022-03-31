@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-// Code based on code found in demo project: AlarmSystem
+// Code from code found in demo project: AlarmSystem
 // https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 /**
  * Represents an alarm system event.

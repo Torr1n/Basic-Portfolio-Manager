@@ -1,5 +1,6 @@
 package ui;
 
+import model.Event;
 import model.EventLog;
 import model.Portfolio;
 import model.Stock;
@@ -50,7 +51,7 @@ public class PortfolioManagerUI extends JFrame {
         setSize(WIDTH, HEIGHT);
         addButtonPanel();
         addMenu();
-        profitOrLoss.add(giveStatus("C:\\Users\\TPata\\IdeaProjects\\project_k9c4x\\data\\crymoji.png",
+        profitOrLoss.add(giveStatus("data/crymoji.png",
                 "No Stocks!"));
 
         addInternalFrame(profitOrLoss);
@@ -74,10 +75,21 @@ public class PortfolioManagerUI extends JFrame {
         @Override
         //EFFECTS: provides actions to be taken when the window is closing
         public void windowClosing(WindowEvent e) {
-            EventLog.printLog();
+            printLog();
             super.windowClosing(e);
         }
+
+        //EFFECTS: prints the log to the console
+        public void printLog() {
+            if (EventLog.getInstance() != null) {
+                for (Event e : EventLog.getInstance()) {
+                    System.out.println(e.toString());
+                }
+            }
+            System.exit(0);
+        }
     }
+
 
     //MODIFIES: this
     //EFFECTS: packs, makes visible and adds to desktop the given JInternalFrame
@@ -112,15 +124,15 @@ public class PortfolioManagerUI extends JFrame {
         profitOrLoss.remove(status);
         if (portfolio.portfolioProfit() > 0) {
             profitOrLoss.add(giveStatus(
-                    "C:\\Users\\TPata\\IdeaProjects\\project_k9c4x\\data\\moneymoji.png",
+                    "data/moneymoji.png",
                     portfolio.portfolioProfit().toString() + " in Profit!"));
         } else if (portfolio.portfolioProfit() < 0) {
             profitOrLoss.add(giveStatus(
-                    "C:\\Users\\TPata\\IdeaProjects\\project_k9c4x\\data\\crymoji.png",
+                    "data/crymoji.png",
                     portfolio.portfolioProfit().toString() + " in Losses!"));
         } else {
             profitOrLoss.add(giveStatus(
-                    "C:\\Users\\TPata\\IdeaProjects\\project_k9c4x\\data\\zzzmoji.png",
+                    "data/zzzmoji.png",
                     "no profits!"));
         }
         profitOrLoss.repaint();

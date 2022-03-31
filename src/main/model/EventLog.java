@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-// Code based on code found in demo project: AlarmSystem
+// Code from code found in demo project: AlarmSystem
 // https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 /**
  * Represents a log of alarm system events.
@@ -56,13 +56,6 @@ public class EventLog implements Iterable<Event> {
     public void clear() {
         events.clear();
         logEvent(new Event("Event log cleared."));
-    }
-
-    //EFFECTS: prints the log to the console
-    public static void printLog() {
-        for (Event e : theLog) {
-            System.out.println(e.toString());
-        }
     }
 
     @Override

@@ -45,3 +45,5 @@ Updated AAPL's price to 150.0
 ***Phase 4: Task 3***
 - If I had more time, I would refactor the PortfolioManagerUI so that it doesn't have the two paths in the
 UML diagram to get information about a stock. Currently, there is excess coupling here that should ideally be reduced.
+I would do this by having the StockUI getting information about stock through PortfolioManagerUI, since they are
+already coupled.
